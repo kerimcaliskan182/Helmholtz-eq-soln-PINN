@@ -441,18 +441,62 @@ def msex1(y, y_):
     retour = torch.mean((yrr - yrr_)**2)
     return retour
 
-# Functions to compute mean squared errors for other boundary conditions (similar to msex1)
 def msex2(y, y_):
-    # Similar to msex1
-    pass
+    """
+    Computes the mean squared error (MSE) for the x-component of the solution for boundary condition 2.
+    
+    Args:
+        y (torch.Tensor): Tensor containing the predicted solution values
+        y_ (torch.Tensor): Tensor containing the true solution values
+        
+    Returns:
+        torch.Tensor: MSE for the x-component of the solution for boundary condition 2
+    """
+    y = ensure_tensor(y)
+    y_ = ensure_tensor(y_)
+    yr = y.view(n_bc, n_data_per_bc)
+    yr_ = y_.view(n_bc, n_data_per_bc)
+    yrr = yr[1:2, :]  # Adjusted to target boundary condition 2
+    yrr_ = yr_[1:2, :]
+    return torch.mean((yrr - yrr_)**2)
 
 def msey1(y, y_):
-    # Similar to msex1
-    pass
+    """
+    Computes the mean squared error (MSE) for the y-component of the solution for boundary condition 3.
+    
+    Args:
+        y (torch.Tensor): Tensor containing the predicted solution values
+        y_ (torch.Tensor): Tensor containing the true solution values
+        
+    Returns:
+        torch.Tensor: MSE for the y-component of the solution for boundary condition 3
+    """
+    y = ensure_tensor(y)
+    y_ = ensure_tensor(y_)
+    yr = y.view(n_bc, n_data_per_bc)
+    yr_ = y_.view(n_bc, n_data_per_bc)
+    yrr = yr[2:3, :]  # Adjusted to target boundary condition 3
+    yrr_ = yr_[2:3, :]
+    return torch.mean((yrr - yrr_)**2)
 
 def msey2(y, y_):
-    # Similar to msex1
-    pass
+    """
+    Computes the mean squared error (MSE) for the y-component of the solution for boundary condition 4.
+    
+    Args:
+        y (torch.Tensor): Tensor containing the predicted solution values
+        y_ (torch.Tensor): Tensor containing the true solution values
+        
+    Returns:
+        torch.Tensor: MSE for the y-component of the solution for boundary condition 4
+    """
+    y = ensure_tensor(y)
+    y_ = ensure_tensor(y_)
+    yr = y.view(n_bc, n_data_per_bc)
+    yr_ = y_.view(n_bc, n_data_per_bc)
+    yrr = yr[3:4, :]  # Adjusted to target boundary condition 4
+    yrr_ = yr_[3:4, :]
+    return torch.mean((yrr - yrr_)**2)
 
 # Initialization of variables and optimization loop
 loss = 0
